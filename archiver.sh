@@ -1,26 +1,26 @@
 #!/bin/bash
 
 instruction() {
-	echo "Используя: $0 -p [путь до папки] -x [пороговое значение]"
-	echo "Например: $0 -p /tmp/log -x 55"
+	echo "Используя: $0 -path [путь до папки] -percent [пороговое значение]"
+	echo "Например: $0 -path /tmp/log -percent 55"
 	echo "Команды:"
-	echo "-p, --path  [ввод пути до нашей папки]"
-	echo "-x, --percent [ввод порогового значения для начала архивации]"
-	echo "-h, --help [показывать эту инструкцию]"
+	echo "-path  [ввод пути до нашей папки]"
+	echo "-percent [ввод порогового значения для начала архивации]"
+	echo "-help [показывать эту инструкцию]"
 	exit 0
 }
 
 while [ $# -gt 0 ]; do
 	case $1 in
-		-p|--path)
+		-path)
 			path_dir="$2"
 			shift 2
 			;;
-		-x|--percent)
+		-percent)
 			perc="$2"
 			shift 2
 			;;
-		-h|--help)
+		-help)
 			instruction
 			;;
 		*)

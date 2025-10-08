@@ -46,7 +46,7 @@ if [ "$perc" -lt 0 ] || [ "$perc" -gt 100 ]; then
 	exit 1
 fi
 
-bu_dir="/Users/steve/backupTest"
+bu_dir="$HOME/backupTest"
 mkdir -p "$bu_dir"
 cnt=0
 CurrPerc=$(df "$path_dir" | tail -1 | tr -s ' ' | cut -d' ' -f5 | tr -d '%')

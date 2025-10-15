@@ -67,9 +67,9 @@ if [ "$CurrPerc" -gt "$perc" ]; then
 	while [ "$CurrPerc" -gt "$perc" ]; do
 		Oldest_File=$(ls -tp "$path_dir" | grep -v '/$' | tail -1)
 		if [ -z "$Oldest_File" ]; then
-      			echo "Нет файлов для архивации"
-       			break
-    		fi
+      		echo "Нет файлов для архивации"
+       		break
+    	fi
 		mv "$path_dir/$Oldest_File" "$Temp_dir/"
 		((cnt++))
 		CurrPerc=$(df "$path_dir" | tail -1 | tr -s ' ' | cut -d' ' -f5 | tr -d '%')

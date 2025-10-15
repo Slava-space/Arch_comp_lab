@@ -76,10 +76,10 @@ if [ "$CurrPerc" -gt "$perc" ]; then
 	done
 	if [ "$LAB1_MAX_COMPRESSION" = "1" ]; then
 		echo "Используем алгоритм сжатия LZMA"
-		tar --lzma -cf "$bu_dir/Folder.tar.lzma" -C "$Temp_dir" .
+		gtar --lzma -cf "$bu_dir/Folder.tar.lzma" -C "$Temp_dir" .
 	else
 		echo "Используем алгоритм сжатия GZIP"
-    	tar -czf "$bu_dir/Folder.tar.gz" -C "$Temp_dir" .
+    	gtar -czf "$bu_dir/Folder.tar.gz" -C "$Temp_dir" .
 	fi
 	rm -rf "$Temp_dir"
 	echo "Архивация  закончена было обработано $cnt файлов"

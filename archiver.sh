@@ -2,10 +2,11 @@
 
 instruction() {
 	echo "Используя: $0 -path [путь до папки] -percent [пороговое значение]"
-	echo "Например: $0 -path /tmp/log -percent 55"
+	echo "Например: $0 -path /tmp/log -percent 55 -compression 0"
 	echo "Команды:"
 	echo "-path  [ввод пути до нашей папки]"
 	echo "-percent [ввод порогового значения для начала архивации]"
+	echo "-compression [1/0 какой алгоритм сжатия используем максимальный или стандартный]"
 	echo "-help [показывать эту инструкцию]"
 	exit 0
 }
@@ -20,6 +21,10 @@ while [ $# -gt 0 ]; do
 			perc="$2"
 			shift 2
 			;;
+		-compression)
+			LAB1_MAX_COMPRESSION="$2"
+			shift 2
+			;; 
 		-help)
 			instruction
 			;;
@@ -29,6 +34,12 @@ while [ $# -gt 0 ]; do
 			;;
 	esac
 done
+
+if [ "$LAB1_MAX_COMPRESSION" != "0" ] && [ "$LAB1_MAX_COMPRESSION" != "1" ]; then
+	echo "Введен неизвестный тип сжатия"
+	instruction
+	exit 1
+fi
 
 if [ -z "$path_dir" ] || [ -z "$perc" ]; then
 	echo "Введены не все обязательные параметры"
@@ -63,7 +74,13 @@ if [ "$CurrPerc" -gt "$perc" ]; then
 		((cnt++))
 		CurrPerc=$(df "$path_dir" | tail -1 | tr -s ' ' | cut -d' ' -f5 | tr -d '%')
 	done
+	if [ "$LAB1_MAX_COMPRESSION" = "1" ]; then
+		echo "Используем алгоритм сжатия LZMA"
+		tar --lzma -cf "$bu_dir/Folder.tar.lzma" -C "$Temp_dir" .
+	else
+		echo "Используем алгоритм сжатия GZIP"
     	tar -czf "$bu_dir/Folder.tar.gz" -C "$Temp_dir" .
+	fi
 	rm -rf "$Temp_dir"
 	echo "Архивация  закончена было обработано $cnt файлов"
 else

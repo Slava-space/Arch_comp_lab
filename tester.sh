@@ -127,6 +127,8 @@ testCase7() {
 	echo ""
 	echo "Результат работы скрипта-архиватора:"
 	bash /Users/steve/Downloads/archiver.sh -path "$folder" -percent "$perc" -compression "$LAB1_MAX_COMPRESSION"
+	echo "Оставшиеся файлы:"
+	ls "$folder"
 	echo ""
 	echo "Тест №7 завершен!"
 	echo "/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/"

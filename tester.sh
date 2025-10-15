@@ -14,7 +14,7 @@ testCase1() {
 	echo "Создан 1 файл размера 1024Mb"
 	echo ""
 	echo "Результат работы скрипта-архиватора:"
-	bash /Users/steve/Downloads/script_1.sh -path "$folder" -percent "$perc"
+	bash /Users/steve/Downloads/archiver.sh -path "$folder" -percent "$perc" -compression "$LAB1_MAX_COMPRESSION"
 	echo ""
 	echo "Тест №1 завершен!"
 	echo "/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/"
@@ -26,7 +26,7 @@ testCase2() {
 	echo "Создано 0 файл размера 0"
 	echo ""
 	echo "Результат работы скрипта-архиватора:"
-	bash /Users/steve/Downloads/script_1.sh -path "$folder" -percent "$perc"
+	bash /Users/steve/Downloads/archiver.sh -path "$folder" -percent "$perc" -compression "$LAB1_MAX_COMPRESSION"
 	echo ""
 	echo "Тест №2 завершен!"
 	echo "/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/"
@@ -44,7 +44,7 @@ testCase3() {
 	echo "Создано 200 файл размера 8Mb: общий объём 1600Mb"
 	echo ""
 	echo "Результат работы скрипта-архиватора:"
-	bash /Users/steve/Downloads/script_1.sh -path "$folder" -percent "$perc"
+	bash /Users/steve/Downloads/archiver.sh -path "$folder" -percent "$perc" -compression "$LAB1_MAX_COMPRESSION"
 	echo ""
 	echo "Тест №3 завершен!"
 	echo "/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/"
@@ -62,7 +62,7 @@ testCase4() {
 	echo "Создано 10 файл размера 80Mb: общий объём 800Mb"
 	echo ""
 	echo "Результат работы скрипта-архиватора:"
-	bash /Users/steve/Downloads/script_1.sh -path "$folder" -percent "$perc"
+	bash /Users/steve/Downloads/archiver.sh -path "$folder" -percent "$perc" -compression "$LAB1_MAX_COMPRESSION"
 	echo ""
 	echo "Тест №4 завершен!"
 	echo "/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/"
@@ -80,7 +80,7 @@ testCase5() {
 	echo "Создано 40 файлов размера 50Mb,: общий объём 2000Mb, заполнение диска на ~97.7%"
 	echo ""
 	echo "Результат работы скрипта-архиватора:"
-	bash /Users/steve/Downloads/script_1.sh -path "$folder" -percent "$perc"
+	bash /Users/steve/Downloads/archiver.sh -path "$folder" -percent "$perc" -compression "$LAB1_MAX_COMPRESSION"
 	echo ""
 	echo "Тест №5 завершен!"
 	echo "/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/"
@@ -105,7 +105,7 @@ testCase6() {
 
 	echo ""
 	echo "Результат работы скрипта-архиватора:"
-	bash /Users/steve/Downloads/script_1.sh -path "$folder" -percent "$perc"
+	bash /Users/steve/Downloads/archiver.sh -path "$folder" -percent "$perc" -compression "$LAB1_MAX_COMPRESSION"
 	echo ""
 	echo "Тест №6 завершен!"
 	echo "/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/"
@@ -126,7 +126,7 @@ testCase7() {
 	echo "Создана 1 папка объёмом 512Mb, 5 файлов размера 80Mb: общий объём 912Mb"
 	echo ""
 	echo "Результат работы скрипта-архиватора:"
-	bash /Users/steve/Downloads/script_1.sh -path "$folder" -percent "$perc"
+	bash /Users/steve/Downloads/archiver.sh -path "$folder" -percent "$perc" -compression "$LAB1_MAX_COMPRESSION"
 	echo ""
 	echo "Тест №7 завершен!"
 	echo "/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/|/"
@@ -154,7 +154,7 @@ testCase8() {
 
 	echo ""
 	echo "Результат работы скрипта-архиватора:"
-	bash /Users/steve/Downloads/script_1.sh -path "$folder" -percent "$perc"
+	bash /Users/steve/Downloads/archiver.sh -path "$folder" -percent "$perc" -compression "$LAB1_MAX_COMPRESSION"
 	echo ""
 	echo "Оставшиеся файлы:"
 	ls "$folder"
@@ -165,11 +165,12 @@ testCase8() {
 
 
 instruction() {
-	echo "Используя: $0 -name [название диска] -percent [пороговое значение]"
-	echo "Например: $0 -name MyDisk -percent 55"
+	echo "Используя: $0 -name [название диска] -percent [пороговое значение] -compression[сжатие]"
+	echo "Например: $0 -name MyDisk -percent 55 -compression 0"
 	echo "Команды:"
 	echo "-name  [название создаваемого виртуального диска для тестов]"
 	echo "-percent [ввод порогового значения для начала архивации]"
+	echo "-compression [1/0 какой алгоритм сжатия используем максимальный или стандартный]"
 	echo "-help [показывать эту инструкцию]"
 	exit 0
 }
@@ -184,6 +185,10 @@ while [ $# -gt 0 ]; do
 			perc="$2"
 			shift 2
 			;;
+		-compression)
+			LAB1_MAX_COMPRESSION="$2"
+			shift 2
+			;; 
 		-help)
 			instruction
 			;;
